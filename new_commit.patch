@@ -1,0 +1,100 @@
+Index: .idea/assetWizardSettings.xml
+===================================================================
+--- .idea/assetWizardSettings.xml	(date 1558130353000)
++++ .idea/assetWizardSettings.xml	(date 1558130353000)
+@@ -1,46 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="WizardSettings">
+-    <option name="children">
+-      <map>
+-        <entry key="vectorWizard">
+-          <value>
+-            <PersistentState>
+-              <option name="children">
+-                <map>
+-                  <entry key="vectorAssetStep">
+-                    <value>
+-                      <PersistentState>
+-                        <option name="children">
+-                          <map>
+-                            <entry key="clipartAsset">
+-                              <value>
+-                                <PersistentState>
+-                                  <option name="values">
+-                                    <map>
+-                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_shopping_cart_black_24dp.xml" />
+-                                    </map>
+-                                  </option>
+-                                </PersistentState>
+-                              </value>
+-                            </entry>
+-                          </map>
+-                        </option>
+-                        <option name="values">
+-                          <map>
+-                            <entry key="outputName" value="ic_shopping_cart_black_24dp" />
+-                            <entry key="sourceFile" value="$USER_HOME$" />
+-                          </map>
+-                        </option>
+-                      </PersistentState>
+-                    </value>
+-                  </entry>
+-                </map>
+-              </option>
+-            </PersistentState>
+-          </value>
+-        </entry>
+-      </map>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(date 1558130353000)
++++ .idea/vcs.xml	(date 1558130640000)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++    <mapping directory="" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/java/com/example/ayomide/chowadminapp/Home.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/ayomide/chowadminapp/Home.java	(date 1558130353000)
++++ app/src/main/java/com/example/ayomide/chowadminapp/Home.java	(date 1558130661000)
+@@ -17,7 +17,7 @@
+         implements NavigationView.OnNavigationItemSelectedListener {
+ 
+     @Override
+-    protected void onCreate(Bundle savedInstanceState){
++    protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate( savedInstanceState );
+         setContentView( R.layout.activity_home );
+         Toolbar toolbar = (Toolbar) findViewById( R.id.toolbar );
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(date 1558130353000)
++++ .idea/misc.xml	(date 1558130661000)
+@@ -29,7 +29,7 @@
+       </value>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
