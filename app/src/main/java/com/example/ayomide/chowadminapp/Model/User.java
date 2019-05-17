@@ -7,7 +7,8 @@ public class User {
     private String phone;
     private String isStaff;
 
-    public User() {
+    public User()
+    {
     }
 
     public User(String name, String password, String phone) {

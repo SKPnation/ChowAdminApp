@@ -21,7 +21,7 @@ public class MenuViewHolder extends RecyclerView.ViewHolder implements
     private ItemClickListener itemClickListener;
 
 
-    public void setItemClickListener(ItemClickListener itemClickListener) {
+    public void setItemClickListener( ItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
 
