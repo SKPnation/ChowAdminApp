@@ -238,7 +238,11 @@ public class Home extends AppCompatActivity
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongClick) {
-                        //code late
+                        //send CategoryId to new Activity and start new Activity
+                        Intent foodList = new Intent(Home.this, FoodList.class);
+                        //Because CategoryId is key so we just get key of this items
+                        foodList.putExtra("CategoryId", adapter.getRef(position).getKey());
+                        startActivity(foodList);
                     }
                 });
 
