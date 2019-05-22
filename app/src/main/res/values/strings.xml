@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">chowtest</string>
+    <string name="app_name">ChowAdmin</string>
     <string name="slogan">We always deliver on time</string>
     <string name="title_activity_home">Home</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
