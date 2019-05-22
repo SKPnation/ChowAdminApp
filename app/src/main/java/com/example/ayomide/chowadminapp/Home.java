@@ -49,7 +49,9 @@ public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     //Firebase
-    DatabaseReference table_user, category;
+    FirebaseDatabase db;
+    DatabaseReference category;
+    FirebaseStorage storage;
     StorageReference storageReference;
     FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter;
 
@@ -67,7 +69,6 @@ public class Home extends AppCompatActivity
     Category newCategory;
 
     Uri saveUri;
-    private final int IMAGE_REQUEST = 71;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,9 +78,10 @@ public class Home extends AppCompatActivity
         toolbar.setTitle("Menu Management");
         setSupportActionBar( toolbar );
 
-        table_user = FirebaseDatabase.getInstance().getReference();
-        category = FirebaseDatabase.getInstance().getReference("Category");
-        storageReference = FirebaseStorage.getInstance().getReference();
+        db = FirebaseDatabase.getInstance();
+        category = db.getReference("Category");
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById( R.id.fab );
         fab.setOnClickListener( new View.OnClickListener() {
@@ -121,6 +123,9 @@ public class Home extends AppCompatActivity
         View add_menu_layout = inflater.inflate(R.layout.add_new_menu_layout, null);
 
         edtName = add_menu_layout.findViewById(R.id.etName);
+        btnSelect = add_menu_layout.findViewById(R.id.btnSelect);
+        btnUpload = add_menu_layout.findViewById(R.id.btnUpload);
+
         btnSelect = add_menu_layout.findViewById(R.id.btnSelect);
         btnUpload = add_menu_layout.findViewById(R.id.btnUpload);
 
@@ -199,7 +204,7 @@ public class Home extends AppCompatActivity
                     .addOnProgressListener( new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress = (100 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
                             mDialog.setMessage( "Uploaded "+progress+"%" );
                         }
                     });
@@ -209,7 +214,8 @@ public class Home extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult( requestCode, resultCode, data );
-        if(requestCode == IMAGE_REQUEST && resultCode == RESULT_OK
+
+        if(requestCode == Common.IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null)
         {
             saveUri = data.getData();
@@ -222,13 +228,14 @@ public class Home extends AppCompatActivity
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select A Picture"), IMAGE_REQUEST);
+        startActivityForResult(Intent.createChooser(intent, "Select A Picture"), Common.IMAGE_REQUEST);
     }
 
 
     private void loadMenu()
     {
-        adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(Category.class, R.layout.menu_item, MenuViewHolder.class, category) {
+        adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(
+                Category.class, R.layout.menu_item, MenuViewHolder.class, category) {
             @Override
             protected void populateViewHolder(MenuViewHolder viewHolder, Category model, int position) {
 

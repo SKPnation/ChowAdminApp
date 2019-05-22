@@ -21,7 +21,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_home"
-
         android:background="@color/overlayBackground"
         app:itemTextColor="#fff"
         app:itemIconTint="#fff"

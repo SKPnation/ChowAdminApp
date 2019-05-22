@@ -1,6 +1,7 @@
 package com.example.ayomide.chowadminapp.Model;
 
 public class Category {
+
     private String Name;
     private String Image;
 
