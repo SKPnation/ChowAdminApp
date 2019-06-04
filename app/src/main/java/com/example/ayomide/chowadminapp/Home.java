@@ -1,6 +1,7 @@
 package com.example.ayomide.chowadminapp;
 
 import android.app.ProgressDialog;
+import android.app.Service;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -29,12 +30,17 @@ import android.widget.Toast;
 import com.example.ayomide.chowadminapp.Common.Common;
 import com.example.ayomide.chowadminapp.Interface.ItemClickListener;
 import com.example.ayomide.chowadminapp.Model.Category;
+import com.example.ayomide.chowadminapp.Service.ListenOrder;
 import com.example.ayomide.chowadminapp.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -111,6 +117,11 @@ public class Home extends AppCompatActivity
         recycler_menu.setLayoutManager(layoutManager);
 
         loadMenu();
+
+        //Call service
+        Intent service = new Intent(Home.this,ListenOrder.class);
+        startService(service);
+
     }
 
     private void showDialog()
@@ -328,6 +339,23 @@ public class Home extends AppCompatActivity
 
     private void deleteCategory(String key)
     {
+        DatabaseReference foods = FirebaseDatabase.getInstance().getReference("Food");
+        Query foodInCategory = foods.orderByChild("menuId").equalTo(key);
+        foodInCategory.addListenerForSingleValueEvent( new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot:dataSnapshot.getChildren())
+                {
+                    postSnapshot.getRef().removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        } );
+
         category.child(key).removeValue();
         Toast.makeText(Home.this, "Item deleted!!!", Toast.LENGTH_LONG ).show();
     }
