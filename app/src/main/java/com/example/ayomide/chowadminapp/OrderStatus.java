@@ -1,6 +1,7 @@
 package com.example.ayomide.chowadminapp;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -54,42 +55,47 @@ public class OrderStatus extends AppCompatActivity {
                 requests
         ) {
             @Override
-            protected void populateViewHolder(OrderViewHolder viewHolder, Request model, int position) {
+            protected void populateViewHolder(OrderViewHolder viewHolder, final Request model, final int position) {
                 viewHolder.tvOrderId.setText(adapter.getRef(position).getKey());
                 viewHolder.tvOrderStatus.setText(convertCodeToStatus(model.getStatus()));
                 viewHolder.tvOrderPhone.setText(model.getPhone());
                 viewHolder.tvOrderAddress.setText(model.getAddress());
 
-                viewHolder.setItemClickListener( new ItemClickListener() {
+                viewHolder.btnEdit.setOnClickListener( new View.OnClickListener() {
                     @Override
-                    public void onClick(View view, int position, boolean isLongClick) {
-                        //...
+                    public void onClick(View view) {
+                        showUpdateDialog(adapter.getRef(position).getKey(), adapter.getItem(position));
                     }
                 });
+
+                viewHolder.btnRemove.setOnClickListener( new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        deleteOrder(adapter.getRef(position).getKey());
+                    }
+                });
+
+                viewHolder.btnDetails.setOnClickListener( new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent orderDetail = new Intent( OrderStatus.this, OrderDetail.class );
+                        Common.currentRequest = model;
+                        orderDetail.putExtra( "OrderId", adapter.getRef( position ).getKey() );
+                        startActivity( orderDetail );
+                    }
+                } );
             }
         };
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }
 
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-
-        if(item.getTitle().equals(Common.UPDATE))
-        {
-            showUpdateDialog(adapter.getRef(item.getOrder()).getKey(), adapter.getItem(item.getOrder()));
-        }
-        else if(item.getTitle().equals(Common.DELETE))
-        {
-            deleteOrder(adapter.getRef(item.getOrder()).getKey());
-        }
-        return super.onContextItemSelected(item);
-    }
 
     private void deleteOrder(String key)
     {
         requests.child(key).removeValue();
         Toast.makeText(OrderStatus.this, "Order deleted!!!", Toast.LENGTH_LONG ).show();
+        adapter.notifyDataSetChanged();
     }
 
     private void showUpdateDialog(final String key, final Request item)
@@ -115,6 +121,7 @@ public class OrderStatus extends AppCompatActivity {
                 item.setStatus(String.valueOf(spinner.getSelectedIndex()));
 
                 requests.child(key).setValue(item);
+                adapter.notifyDataSetChanged(); //add to update item size
             }
         });
 

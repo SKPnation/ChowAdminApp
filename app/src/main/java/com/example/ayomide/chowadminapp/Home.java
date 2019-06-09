@@ -137,8 +137,8 @@ public class Home extends AppCompatActivity
         btnSelect = add_menu_layout.findViewById(R.id.btnSelect);
         btnUpload = add_menu_layout.findViewById(R.id.btnUpload);
 
-        btnSelect = add_menu_layout.findViewById(R.id.btnSelect);
-        btnUpload = add_menu_layout.findViewById(R.id.btnUpload);
+        //btnSelect = add_menu_layout.findViewById(R.id.btnSelect);
+        //btnUpload = add_menu_layout.findViewById(R.id.btnUpload);
 
         btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override

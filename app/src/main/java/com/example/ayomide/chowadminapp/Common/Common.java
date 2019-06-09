@@ -1,10 +1,12 @@
 package com.example.ayomide.chowadminapp.Common;
 
+import com.example.ayomide.chowadminapp.Model.Request;
 import com.example.ayomide.chowadminapp.Model.User;
 
 public class Common {
 
     public static User currentUser;
+    public static Request currentRequest;
 
     public static final int IMAGE_REQUEST = 71;
 
