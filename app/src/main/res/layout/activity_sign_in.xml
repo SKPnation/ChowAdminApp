@@ -36,7 +36,7 @@
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/etPassword"
             android:hint="Password"
-            android:text="aaaaaa"
+            android:text=""
             android:textColorHint="#fff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
