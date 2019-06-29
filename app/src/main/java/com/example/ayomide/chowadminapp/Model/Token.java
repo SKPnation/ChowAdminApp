@@ -1,8 +1,8 @@
 package com.example.ayomide.chowadminapp.Model;
 
 public class Token {
-    private String token;
-    private Boolean isServerToken;
+    public String token;
+    public Boolean isServerToken;
 
     public Token() {
     }
