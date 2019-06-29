@@ -200,6 +200,6 @@ public class OrderStatus extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
-                } );
+                });
     }
 }
