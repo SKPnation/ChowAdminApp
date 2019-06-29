@@ -2,6 +2,8 @@ package com.example.ayomide.chowadminapp.Common;
 
 import com.example.ayomide.chowadminapp.Model.Request;
 import com.example.ayomide.chowadminapp.Model.User;
+import com.example.ayomide.chowadminapp.Remote.APIService;
+import com.example.ayomide.chowadminapp.Remote.FCMRetrofitClient;
 
 public class Common {
 
@@ -12,4 +14,21 @@ public class Common {
 
     public static final String UPDATE = "Update";
     public static final String DELETE = "Delete";
+
+    public static final String fcmUrl = "https://fcm.googleapis.com/";
+
+    public static APIService getFCMClient()
+    {
+        return FCMRetrofitClient.getFCMClient( fcmUrl ).create( APIService.class );
+    }
+
+    public static String convertCodeToStatus(String code)
+    {
+        if (code.equals( "0" ))
+            return "Placed";
+        else if (code.equals( "1" ))
+            return "On my way";
+        else
+            return "Delivered";
+    }
 }

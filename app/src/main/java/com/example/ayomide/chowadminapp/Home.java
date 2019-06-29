@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.example.ayomide.chowadminapp.Common.Common;
 import com.example.ayomide.chowadminapp.Interface.ItemClickListener;
 import com.example.ayomide.chowadminapp.Model.Category;
+import com.example.ayomide.chowadminapp.Model.Token;
 import com.example.ayomide.chowadminapp.ViewHolder.MenuViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,6 +39,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -114,7 +116,16 @@ public class Home extends AppCompatActivity
 
         loadMenu();
 
+        //Send token
+        updateToken(FirebaseInstanceId.getInstance().getToken() );
+    }
 
+    private void updateToken(String token)
+    {
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference tokens = db.getReference("Tokens");
+        Token data = new Token( token, true ); //is true because it's from the server app
+        tokens.child(Common.currentUser.getPhone()).setValue( data );
     }
 
     private void showDialog()
