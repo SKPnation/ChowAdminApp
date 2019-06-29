@@ -26,11 +26,6 @@
         <activity android:name=".FoodList" />
         <activity android:name=".OrderStatus" />
 
-        <service
-            android:name=".Service.ListenOrder"
-            android:enabled="true"
-            android:exported="true" />
-
         <activity android:name=".OrderDetail"></activity>
     </application>
 
