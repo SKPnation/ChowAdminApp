@@ -79,6 +79,7 @@ public class OrderStatus extends AppCompatActivity {
             @Override
             protected void populateViewHolder(OrderViewHolder viewHolder, final Request model, final int position) {
                 viewHolder.tvOrderId.setText(adapter.getRef(position).getKey());
+                viewHolder.tvOrderDate.setText( Common.getDate( Long.parseLong( adapter.getRef(position).getKey() ) ) );
                 viewHolder.tvOrderStatus.setText(Common.convertCodeToStatus(model.getStatus()));
                 viewHolder.tvOrderPhone.setText(model.getPhone());
                 viewHolder.tvOrderAddress.setText(model.getAddress());

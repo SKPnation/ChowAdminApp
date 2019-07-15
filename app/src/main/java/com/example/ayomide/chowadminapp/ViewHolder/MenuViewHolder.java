@@ -37,7 +37,7 @@ public class MenuViewHolder extends RecyclerView.ViewHolder implements
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View view){
         itemClickListener.onClick(view, getAdapterPosition(),false);
     }
 

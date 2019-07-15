@@ -2,7 +2,6 @@ package com.example.ayomide.chowadminapp.Model;
 
 public class User {
 
-
     private String name;
     private String password;
     private String phone;

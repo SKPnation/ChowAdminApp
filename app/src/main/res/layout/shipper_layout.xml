@@ -26,49 +26,20 @@
                 android:layout_weight="9">
 
                 <TextView
-                    android:id="@+id/order_id"
+                    android:id="@+id/shipper_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="#11111"
+                    android:text="Shipper name"
                     android:layout_marginLeft="10dp"
                     android:textColor="#000"
                     android:textStyle="bold"
                     android:textAllCaps="true"/>
 
                 <TextView
-                    android:id="@+id/order_date"
+                    android:id="@+id/shipper_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Order Date"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="#000"
-                    android:textStyle="italic"
-                    android:textAllCaps="true"/>
-
-                <TextView
-                    android:id="@+id/order_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Status"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="#000"
-                    android:textStyle="italic"
-                    android:textAllCaps="true"/>
-
-                <TextView
-                    android:id="@+id/order_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="123456789"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="#000"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:id="@+id/order_address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Address"
+                    android:text="shipper phone"
                     android:layout_marginLeft="10dp"
                     android:textColor="#000"
                     android:textStyle="italic"
@@ -80,7 +51,7 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:weightSum="4"
+            android:weightSum="2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -104,30 +75,6 @@
                 android:textSize="13sp"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
-                android:gravity="center"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/btnDetails"
-                android:layout_weight="1"
-                android:background="#fff"
-                android:text="DETAILS"
-                android:textSize="13sp"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/btnDirection"
-                android:background="#fff"
-                android:layout_weight="1"
-                android:text="DIRECTION"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />

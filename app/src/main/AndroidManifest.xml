@@ -25,21 +25,20 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".FoodList" />
         <activity android:name=".OrderStatus" />
-
-        <activity android:name=".OrderDetail"></activity>
+        <activity android:name=".OrderDetail" />
 
         <service android:name=".Service.MyFirebaseIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
         <service android:name=".Service.MyFirebaseMessaging">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
+        <activity android:name=".ShipperManagement"></activity>
     </application>
 
 </manifest>

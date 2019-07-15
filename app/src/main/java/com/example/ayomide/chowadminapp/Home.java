@@ -317,6 +317,9 @@ public class Home extends AppCompatActivity
         if(id == R.id.nav_orders){
             Intent orderIntent = new Intent(Home.this, OrderStatus.class);
             startActivity(orderIntent);
+        } else if (id == R.id.nav_shipper){
+            Intent shipperIntent = new Intent( Home.this, ShipperManagement.class );
+            startActivity( shipperIntent );
         }
 
 

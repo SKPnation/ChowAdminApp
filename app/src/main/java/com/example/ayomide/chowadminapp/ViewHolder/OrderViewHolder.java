@@ -9,12 +9,13 @@ import android.widget.TextView;
 import com.example.ayomide.chowadminapp.R;
 
 public class OrderViewHolder extends RecyclerView.ViewHolder {
-    public TextView tvOrderId, tvOrderStatus, tvOrderPhone, tvOrderAddress;
+    public TextView tvOrderId, tvOrderDate, tvOrderStatus, tvOrderPhone, tvOrderAddress;
     public Button btnEdit, btnRemove, btnDetails, btnDirection;
 
     public OrderViewHolder(@NonNull View itemView) {
         super( itemView );
         tvOrderId = itemView.findViewById(R.id.order_id);
+        tvOrderDate = itemView.findViewById( R.id.order_date );
         tvOrderStatus = itemView.findViewById(R.id.order_status);
         tvOrderPhone = itemView.findViewById(R.id.order_phone);
         tvOrderAddress = itemView.findViewById(R.id.order_address);

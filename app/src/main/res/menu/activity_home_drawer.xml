@@ -13,13 +13,13 @@
             android:icon="@drawable/ic_access_time_black_24dp"
             android:title="Orders" />
         <item
-            android:id="@+id/nav_cart"
-            android:icon="@drawable/ic_shopping_cart_black_24dp"
-            android:title="Cart" />
+            android:id="@+id/nav_shipper"
+            android:icon="@drawable/ic_local_shipping_black_24dp"
+            android:title="Shippers Management" />
         <item
             android:id="@+id/nav_log_out"
             android:icon="@drawable/ic_exit_to_app_black_24dp"
-            android:title="Sign out" />
+            android:title="Sign Out" />
     </group>
 
 </menu>

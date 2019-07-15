@@ -130,7 +130,7 @@ public class FoodList extends AppCompatActivity {
     private void showNewFoodDialog()
     {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(FoodList.this);
-        alertDialog.setTitle("Add new Food");
+        alertDialog.setTitle("Add New Food");
         alertDialog.setMessage("Put in full information");
         alertDialog.setIcon(R.drawable.ic_shopping_cart_black_24dp);
 
